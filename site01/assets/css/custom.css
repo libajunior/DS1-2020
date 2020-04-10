@@ -65,3 +65,8 @@ footer .copyright a {
     font-size: 0.6em;
     color: #939598;
 }
+#contato {
+    background-image: url('../img/bkg-contato.jpg');
+    background-repeat: no-repeat;
+    padding: 4em 0;
+}
