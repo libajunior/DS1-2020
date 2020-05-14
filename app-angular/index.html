@@ -20,6 +20,11 @@
                 Cadastro de Clientes
             </div>
             <div class="card-body">
+
+                <div class="alert alert-danger text-center" ng-if="msgerro">
+                    {{ msgerro }}
+                </div>
+
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
                         <tr>
@@ -31,13 +36,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Libório Júnior</td>
-                            <td>libajunior@gmail.com</td>
-                            <td>Pato Branco</td>
-                            <td>PR</td>
-                        </tr>
+                        <!--
+                            ng-repeat faz o que o bloco abaixo faria em Jsvascript (ou java)
+                            
+                            for (var n = 0; n < clientes.length; n++) {
+                                var cliente = clientes[n];
+                            }
+                        -->
+                        <tr ng-repeat="cliente in clientes">
+                            <td>{{ cliente.id }}</td>
+                            <td>{{ cliente.nome }}</td>
+                            <td>{{ cliente.email }}</td>
+                            <td>{{ cliente.cidade }}</td>
+                            <td>{{ cliente.estado }}</td>
+                        </tr>                   
                     </tbody>
                 </table>
 
@@ -50,7 +62,12 @@
     <!-- Carrega JS da Aplicação -->
     <script src="app.js"></script>
 
+    <!-- Carrega Service's da Aplicação-->
+    <script src="app/service/cliente.service.js"></script>
+
     <!-- Carrega Controller's da Aplicação -->
     <script src="app/controller/cliente.controller.js"></script>
+
+
 </body>
 </html>
