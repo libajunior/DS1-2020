@@ -1,0 +1,10 @@
+thead .btn-link {
+    color: #fff;
+}
+thead .btn-link:hover {
+    color: #fff;
+}
+thead .active {
+    text-decoration: underline;
+    font-weight: bold;
+}
