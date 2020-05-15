@@ -29,24 +29,24 @@
                 </div>
 
                 <input type="text" class="form-control form-control-lg" placeholder="Filtrar" ng-model="textFilter">
-<h3>{{filterColumn}}</h3>
+
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
                         <tr>
                             <th>
-                                <button class="btn btn-link" ng-class="{'active': filterColumn == 'id'}" ng-click="setFilterColumn('id')">Código</button>
+                                <button class="btn btn-link" ng-class="{'active': selectedColumn == 'id'}" ng-click="setColumn('id')">Código</button>                               
                             </th>
                             <th>
-                                <button class="btn btn-link" ng-class="{'active': filterColumn == 'nome'}" ng-click="setFilterColumn('nome')">Nome Completo</button>
+                                <button class="btn btn-link" ng-class="{'active': selectedColumn == 'nome'}" ng-click="setColumn('nome')">Nome Completo</button>
                             </th>
                             <th>
-                                <button class="btn btn-link" ng-class="{'active': filterColumn == 'email'}" ng-click="setFilterColumn('email')">E-mail</button>
+                                <button class="btn btn-link" ng-class="{'active': selectedColumn == 'email'}" ng-click="setColumn('email')">E-mail</button>
                             </th>
                             <th>
-                                <button class="btn btn-link" ng-class="{'active': filterColumn == 'cidade'}" ng-click="setFilterColumn('cidade')">Cidade</button>
+                                <button class="btn btn-link" ng-class="{'active': selectedColumn == 'cidade'}" ng-click="setColumn('cidade')">Cidade</button>
                             </th>
                             <th>
-                                <button class="btn btn-link" ng-class="{'active': filterColumn == 'estado'}" ng-click="setFilterColumn('estado')">Estado</button>
+                                <button class="btn btn-link" ng-class="{'active': selectedColumn == 'estado'}" ng-click="setColumn('estado')">Estado</button>
                             </th>
                         </tr>
                     </thead>
@@ -58,17 +58,15 @@
                                 var cliente = clientes[n];
                             }
                         -->
-                        <tr ng-repeat="cliente in clientes | filter:textFilter ">
+                        <tr ng-repeat="cliente in clientes | filter: filter() | orderBy: selectedColumn:decrescente">
                             <td>{{ cliente.id }}</td>
-                            <td>{{ cliente.nome }}</td>
+                            <td>{{ cliente.nome  }}</td>
                             <td>{{ cliente.email }}</td>
                             <td>{{ cliente.cidade }}</td>
                             <td>{{ cliente.estado }}</td>
                         </tr>                   
                     </tbody>
                 </table>
-
-                {{clientes | filter: {filterColumn: textFilter} }}
 
             </div>
         </div>

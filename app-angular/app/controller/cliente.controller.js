@@ -3,10 +3,22 @@
    
    app.controller('ClienteController', function( $scope, ClienteService ){
 
-    $scope.filterColumn = 'nome';
+    $scope.decrescente = false;
+    $scope.selectedColumn = 'nome';
 
-    $scope.setFilterColumn = function ( columnName ){
-        $scope.filterColumn = columnName;
+    $scope.setColumn = function ( columnName ){
+        $scope.selectedColumn = columnName;
+
+        //determina o ordenação decrescente (false)
+        $scope.decrescente = !$scope.decrescente;
+    }
+
+    $scope.filter = function() {
+        var filtro = {};
+
+        filtro[$scope.selectedColumn] = $scope.textFilter;
+
+        return filtro;
     }
 
     //Carrega uma lista de clientes
