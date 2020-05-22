@@ -11,3 +11,10 @@ thead .active {
     text-decoration: underline;
     font-weight: bold;
 }
+.card-header,
+.card-footer {
+    display: flex;
+}
+.spacer {
+    flex: 1 1 auto;
+}
