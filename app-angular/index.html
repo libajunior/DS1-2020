@@ -59,7 +59,7 @@
                                     <button class="btn btn-link" ng-class="{'active': selectedColumn == 'cidade'}"
                                         ng-click="setColumn('cidade')">Cidade</button>
                                 </th>
-                                <th>
+                                <th colspan="2">
                                     <button class="btn btn-link" ng-class="{'active': selectedColumn == 'estado'}"
                                         ng-click="setColumn('estado')">Estado</button>
                                 </th>
@@ -67,7 +67,7 @@
                         </thead>
                         <tbody ng-if="clientes.length == 0">
                             <tr>
-                                <td colspan="5">
+                                <td colspan="6">
                                     <p class="lead text-center text-muted">Nenhum cliente foi cadastrado</p>
                                 </td>
                             </tr>
@@ -87,6 +87,9 @@
                                 <td>{{ cliente.email }}</td>
                                 <td>{{ cliente.cidade }}</td>
                                 <td>{{ cliente.estado }}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-warning" ng-click="editar(cliente)">Editar</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -113,6 +116,7 @@
             </div>
 
             <div class="card-footer" ng-if="!showTable">
+                <button class="btn btn-danger" ng-click="excluir()">EXCLUIR</button>
                 <span class="spacer"></span>
                 <button class="btn btn-light" ng-click="cancelar()">CANCELAR</button>
                 <button class="btn btn-success" ng-click="salvar()">SALVAR</button>

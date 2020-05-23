@@ -48,21 +48,28 @@
 
     //Salvar a inclusão/edição do cliente
     $scope.salvar = function() {
-        console.log( $scope.cliente );
+        ClienteService.salvar($scope.cliente).then(function( result) {
+            $scope.showTable = true;
+        });
+        
+    }
+
+    //Editar o cliente selecionado
+    $scope.editar = function(cliente) {
+        $scope.cliente = cliente;
+        $scope.showTable = false;
+    }
+
+    //Excluir o cliente selecionado
+    $scope.excluir = function() {
+        ClienteService.remover($scope.cliente).then(function(result){
+            $scope.showTable = true;
+        });
     }
 
     //Carrega uma lista de clientes
     ClienteService.listar().then(function( result ){
-console.log(result.data);
-
         $scope.clientes = result.data;
-    }).catch(function( error ) {
-        if (error.status == 404) {
-            $scope.msgerro = 'O recurso não foi encontrado';
-        } else {
-            $scope.msgerro = error.statusText;
-        }
-        
     });
 
    });
