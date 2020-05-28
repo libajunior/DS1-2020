@@ -21,7 +21,7 @@
                 cliente.id = ultimo ? ultimo.id + 1 : 1;
 
                 //Adiciona o cliente no vetor
-                dados.push(cliente);v
+                dados.push(cliente);
 
                 //Devolve o vetor para o localstorage
                 $localStorage.clientes = dados;

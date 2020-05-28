@@ -9,8 +9,6 @@
     //Controle de exibição da tabela/formulario
     $scope.showTable = true;
 
-    
-
     //Seta a coluna para ser filtrada/ordenada
     $scope.setColumn = function ( columnName ){
         $scope.selectedColumn = columnName;

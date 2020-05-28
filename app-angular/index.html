@@ -5,12 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS Bootstrap -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 
     <!-- CSS Customizado -->
     <link rel="stylesheet" href="assets/css/custom.css">
-    
+
+    <!-- Jquery -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
     <!-- AngularJS -->
     <script src="node_modules/angular/angular.min.js"></script>
 
@@ -88,7 +94,8 @@
                                 <td>{{ cliente.cidade }}</td>
                                 <td>{{ cliente.estado }}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-outline-warning" ng-click="editar(cliente)">Editar</button>
+                                    <button class="btn btn-sm btn-outline-warning"
+                                        ng-click="editar(cliente)">Editar</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -98,28 +105,50 @@
                 <div ng-if="!showTable">
                     <div class="form-group">
                         <label>Nome Completo</label>
-                        <input type="text" class="form-control" placeholder="Informe o nome completo" ng-model="cliente.nome">
+                        <input type="text" class="form-control" placeholder="Informe o nome completo"
+                            ng-model="cliente.nome">
                     </div>
                     <div class="form-group">
                         <label>E-mail</label>
-                        <input type="email" class="form-control" placeholder="Informe o e-mail" ng-model="cliente.email">
+                        <input type="email" class="form-control" placeholder="Informe o e-mail"
+                            ng-model="cliente.email">
                     </div>
                     <div class="form-group">
                         <label>Cidade</label>
-                        <input type="text" class="form-control" placeholder="Informe a cidade" ng-model="cliente.cidade">
+                        <input type="text" class="form-control" placeholder="Informe a cidade"
+                            ng-model="cliente.cidade">
                     </div>
                     <div class="form-group">
                         <label>Estado</label>
-                        <input type="text" class="form-control" placeholder="Informe o estado" ng-model="cliente.estado">
+                        <input type="text" class="form-control" placeholder="Informe o estado"
+                            ng-model="cliente.estado">
                     </div>
                 </div>
             </div>
 
             <div class="card-footer" ng-if="!showTable">
-                <button class="btn btn-danger" ng-click="excluir()">EXCLUIR</button>
+                <button class="btn btn-danger" ng-if="cliente.id" data-toggle="modal" data-target="#confirmModal">EXCLUIR</button>
                 <span class="spacer"></span>
                 <button class="btn btn-light" ng-click="cancelar()">CANCELAR</button>
                 <button class="btn btn-success" ng-click="salvar()">SALVAR</button>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="confirmModal" data-keyboard="false" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Confirmar Exclusão</h5>
+                        </div>
+                        <div class="modal-body">
+                            Deseja realmente excluir este registro?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">CANCELAR</button>
+                            <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" ng-click="excluir()">CONFIRMAR</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
