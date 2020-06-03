@@ -18,3 +18,6 @@ thead .active {
 .spacer {
     flex: 1 1 auto;
 }
+.conteudo {
+    margin-top: 40px;
+}

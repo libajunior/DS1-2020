@@ -1,7 +1,10 @@
 (function( app ){
    'use strict';
    
-   app.controller('EstadoController', function( $scope, EstadoService ){
+   app.controller('EstadoController', function( $scope, EstadoService, $rootScope ){
+    //Sinaliza a página ativa
+    $rootScope.menuAtivo = 'estados';
+
     //Controle para OrderBy e Filter
     $scope.decrescente = false;
     $scope.selectedColumn = 'id';

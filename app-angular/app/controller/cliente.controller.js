@@ -1,7 +1,11 @@
 (function( app ){
    'use strict';
    
-   app.controller('ClienteController', function( $scope, ClienteService ){
+   app.controller('ClienteController', function( $scope, ClienteService, EstadoService, $rootScope ){
+    
+    //Sinaliza a página ativa
+    $rootScope.menuAtivo = 'clientes';
+    
     //Controle para OrderBy e Filter
     $scope.decrescente = false;
     $scope.selectedColumn = 'id';
@@ -67,7 +71,13 @@
 
     //Carrega uma lista de clientes
     ClienteService.listar().then(function( result ){
+        $scope.estados = [];
         $scope.clientes = result.data;
+
+        //Carrega os estados cadastrados
+        EstadoService.listar().then(function(result2){
+            $scope.estados = result2.data;
+        });
     });
 
    });
