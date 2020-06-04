@@ -1,7 +1,7 @@
 const appJS = angular.module('appJS', ['ngStorage', 'ngRoute']);
 
 //Configuração das rotas
-appJS.config(function($routeProvider){
+appJS.config(function ($routeProvider) {
 
     $routeProvider
         .when('/clientes', {
@@ -12,6 +12,29 @@ appJS.config(function($routeProvider){
             templateUrl: 'app/view/estado.view.html',
             controller: 'EstadoController'
         })
-        .otherwise({redirectTo: '/clientes'});
+        .when('/signin', {
+            templateUrl: 'app/view/signin.view.html',
+            controller: 'SignController'
+        })
+        .when('/signup', {
+            templateUrl: 'app/view/signup.view.html',
+            controller: 'SignController'
+        })
+        .otherwise({ redirectTo: '/clientes' });
+
+});
+
+//Definoo que acontecerá na execução da aplicação
+appJS.run(function ($rootScope, $location, $sessionStorage) {
+
+    $rootScope.$on('$locationChangeStart', function () {
+
+        if ($location.path().indexOf('sign') < 0) {
+            //Verifica se o usuário entrou
+            if (!$sessionStorage.logado) {
+                $location.path('/signin');
+            }
+        }
+    });
 
 });
