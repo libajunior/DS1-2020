@@ -83,11 +83,6 @@
             </div>
             <div class="form-group">
                 <label>Estado</label>
-                <input type="text" class="form-control" placeholder="Informe o estado" ng-model="cliente.estado">
-            </div>
-            {{estados}}
-            <div class="form-group">
-                <label>Estado</label>
                 <select class="form-control" ng-options="estado.nome for estado in estados track by estado.id" ng-model="cliente.estado"></select>
             </div>
         </div>
