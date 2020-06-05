@@ -24,7 +24,7 @@ appJS.config(function ($routeProvider) {
 
 });
 
-//Definoo que acontecerá na execução da aplicação
+//Define que acontecerá na execução da aplicação
 appJS.run(function ($rootScope, $location, $sessionStorage) {
 
     $rootScope.$on('$locationChangeStart', function () {
